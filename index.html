@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AndyMentor | Disciplina y Mentalidad</title>
+
+    <!-- Google Fonts: Oswald para impacto, Inter para legibilidad -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              heading: ["Oswald", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#050505",
+                surface: "#111111",
+                border: "#222222",
+                red: "#d90429",
+                redHover: "#ef233c",
+              },
+            },
+            animation: {
+              "fade-up": "fadeUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Clases de utilidad para el JS de scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-brand-dark text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-brand-red selection:text-white"
+  >
+    <!-- NAVEGACIÓN -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border px-6 py-4 flex justify-between items-center transition-all duration-300"
+    >
+      <a
+        href="#"
+        class="font-heading text-2xl font-bold tracking-widest text-white uppercase hover:text-brand-red transition-colors"
+        >AndyMentor.</a
+      >
+      <div class="flex gap-3 sm:gap-4 items-center">
+        <a
+          href="/pages/login.html"
+          class="text-sm sm:text-base font-semibold text-gray-300 hover:text-white transition-colors"
+        >
+          Ingresar
+        </a>
+        <a
+          href="/pages/register.html"
+          class="bg-brand-red hover:bg-brand-redHover text-white text-sm sm:text-base font-bold uppercase tracking-wide px-5 py-2.5 rounded-sm transition-all duration-300 shadow-[0_4px_15px_rgba(217,4,41,0.2)] hover:shadow-[0_6px_20px_rgba(217,4,41,0.4)] hover:-translate-y-0.5"
+        >
+          Unirme
+        </a>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header
+      class="relative min-h-screen flex items-center justify-center pt-20 px-4 text-center bg-brand-dark"
+    >
+      <!-- Background Image with Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover opacity-30 grayscale" />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/80 to-brand-dark"
+        ></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto reveal active">
+        <h1
+          class="font-heading text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tight leading-none mb-6 text-white drop-shadow-2xl"
+        >
+          Disciplina y Mentalidad<br />
+          <span class="text-brand-red block mt-2"
+            >El Camino de los que No se Rinden</span
+          >
+        </h1>
+        <p
+          class="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium leading-relaxed"
+        >
+          Si no tienes disciplina, no tienes nada. La motivación es una mentira
+          temporal. Aquí aprendes a construir sistemas inquebrantables.
+        </p>
+        <a
+          href="#servicios"
+          class="inline-block bg-brand-red hover:bg-brand-redHover text-white font-bold text-lg uppercase tracking-wider px-8 py-4 rounded-sm transition-all duration-300 shadow-[0_4px_20px_rgba(217,4,41,0.3)] hover:shadow-[0_8px_30px_rgba(217,4,41,0.5)] hover:-translate-y-1"
+        >
+          Empieza ahora
+        </a>
+      </div>
+    </header>
+
+    <!-- EL PROBLEMA SECTION -->
+    <section class="py-24 px-6 bg-brand-dark">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <h2
+            class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+          >
+            La dura realidad
+          </h2>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+            Sabes que estás perdiendo el tiempo, pero sigues en el mismo ciclo
+            interminable.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+          <!-- Card 1 -->
+          <div
+            class="bg-brand-surface border border-brand-border p-8 hover:border-brand-red/50 hover:-translate-y-2 transition-all duration-300 group"
+          >
+            <h3
+              class="font-heading text-2xl uppercase font-bold text-white mb-4 group-hover:text-brand-red transition-colors"
+            >
+              Te cuesta enfocarte
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Las distracciones controlan tu vida. Tu celular dicta tus horas,
+              tu atención está destrozada y tu productividad es nula.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="bg-brand-surface border border-brand-border p-8 hover:border-brand-red/50 hover:-translate-y-2 transition-all duration-300 group"
+          >
+            <h3
+              class="font-heading text-2xl uppercase font-bold text-white mb-4 group-hover:text-brand-red transition-colors"
+            >
+              Empiezas y no terminas
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Mucha emoción el primer día, cero ejecución al mes. La motivación
+              te abandona rápido cuando llega la incomodidad.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="bg-brand-surface border border-brand-border p-8 hover:border-brand-red/50 hover:-translate-y-2 transition-all duration-300 group"
+          >
+            <h3
+              class="font-heading text-2xl uppercase font-bold text-white mb-4 group-hover:text-brand-red transition-colors"
+            >
+              Sabes qué hacer
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Tienes la información, tienes el plan perfecto en tu cabeza...
+              pero simplemente
+              <span class="text-white font-semibold">no lo haces</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ SECTION -->
+    <section class="py-24 px-6 bg-brand-surface border-y border-brand-border">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal"
+      >
+        <div
+          class="relative h-[400px] lg:h-[600px] w-full rounded-sm overflow-hidden group"
+        >
+          <img
+            class="absolute bg-white inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"
+          ></div>
+        </div>
+        <div class="space-y-6">
+          <h2
+            class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-white leading-tight"
+          >
+            Cero motivación vacía.<br />
+            <span class="text-brand-red">100% Ejecución.</span>
+          </h2>
+          <h3
+            class="text-xl text-white font-semibold uppercase tracking-widest"
+          >
+            Andy Mentor
+          </h3>
+          <p class="text-gray-400 text-lg leading-relaxed">
+            Me cansé de ver a hombres con potencial desperdiciando sus vidas
+            frente a pantallas, esperando "sentirse motivados" para actuar.
+            Construí este sistema porque yo estuve ahí. Rompí el ciclo a base de
+            disciplina implacable, y ahora te enseño a hacerlo.
+          </p>
+          <p class="text-gray-400 text-lg leading-relaxed">
+            Aquí no hay palmaditas en la espalda. Si buscas a alguien que
+            justifique tus excusas, estás en el lugar equivocado. Si quieres
+            resultados reales, bienvenido.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO SECTION -->
+    <section class="py-24 px-6 bg-brand-dark">
+      <div class="max-w-7xl mx-auto reveal">
+        <div class="text-center mb-16">
+          <h2
+            class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+          >
+            El Sistema
+          </h2>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+            Tres pilares innegociables para recuperar el control absoluto de tu
+            vida.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+          <!-- Step 1 -->
+          <div
+            class="relative flex-1 bg-brand-surface border border-brand-border p-10 overflow-hidden group"
+          >
+            <span
+              class="absolute top-2 right-4 font-heading text-8xl font-bold text-brand-border/40 group-hover:text-brand-red/10 transition-colors pointer-events-none"
+              >01</span
+            >
+            <div class="relative z-10">
+              <h3
+                class="font-heading text-3xl uppercase font-bold text-white mb-4"
+              >
+                Mentalidad
+              </h3>
+              <p class="text-gray-400 leading-relaxed">
+                Destruimos tus excusas. Reprogramamos la forma en la que
+                respondes a la incomodidad, el estrés y el miedo al fracaso.
+              </p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div
+            class="relative flex-1 bg-brand-surface border border-brand-border p-10 overflow-hidden group"
+          >
+            <span
+              class="absolute top-2 right-4 font-heading text-8xl font-bold text-brand-border/40 group-hover:text-brand-red/10 transition-colors pointer-events-none"
+              >02</span
+            >
+            <div class="relative z-10">
+              <h3
+                class="font-heading text-3xl uppercase font-bold text-white mb-4"
+              >
+                Disciplina
+              </h3>
+              <p class="text-gray-400 leading-relaxed">
+                Construimos rutinas militarizadas. Hábitos irrompibles que se
+                ejecutan automáticamente, sin importar cómo te sientas al
+                despertar.
+              </p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div
+            class="relative flex-1 bg-brand-surface border border-brand-border p-10 overflow-hidden group"
+          >
+            <span
+              class="absolute top-2 right-4 font-heading text-8xl font-bold text-brand-border/40 group-hover:text-brand-red/10 transition-colors pointer-events-none"
+              >03</span
+            >
+            <div class="relative z-10">
+              <h3
+                class="font-heading text-3xl uppercase font-bold text-white mb-4"
+              >
+                Acción
+              </h3>
+              <p class="text-gray-400 leading-relaxed">
+                Ejecución implacable. Pasamos de la teoría a los resultados
+                medibles en tu trabajo, cuenta bancaria, físico y vida personal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS SECTION -->
+    <section
+      id="servicios"
+      class="py-24 px-6 bg-brand-surface border-t border-brand-border"
+    >
+      <div class="max-w-7xl mx-auto reveal">
+        <div class="text-center mb-16">
+          <h2
+            class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+          >
+            Toma Acción
+          </h2>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+            Elige tu nivel de compromiso.
+            <span class="text-brand-red font-semibold"
+              >No hay reembolsos por falta de esfuerzo.</span
+            >
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Ebooks -->
+          <div
+            class="bg-brand-dark border border-brand-border p-8 flex flex-col hover:border-gray-600 transition-colors"
+          >
+            <h3 class="font-heading text-2xl uppercase font-bold text-white">
+              Ebooks
+            </h3>
+            <div class="font-heading text-4xl text-white my-4">$15 USD</div>
+            <p class="text-gray-400 text-sm mb-8 flex-grow">
+              "Base de disciplina". Los manuales operativos para entender el
+              sistema desde cero. Lectura obligatoria.
+            </p>
+            <button
+              class="w-full border border-brand-border text-white font-bold uppercase tracking-wider py-3 rounded-sm hover:border-white transition-colors"
+            >
+              Aplicar Ahora
+            </button>
+          </div>
+
+          <!-- Grabadas -->
+          <div
+            class="bg-brand-dark border border-brand-border p-8 flex flex-col hover:border-gray-600 transition-colors"
+          >
+            <h3 class="font-heading text-2xl uppercase font-bold text-white">
+              Mentorías Grabadas
+            </h3>
+            <div class="font-heading text-4xl text-white my-4">$15 USD</div>
+            <p class="text-gray-400 text-sm mb-8 flex-grow">
+              "Clases profundas listas para ver". Acceso inmediato a sesiones en
+              video sobre enfoque extremo y diseño de rutinas.
+            </p>
+            <button
+              class="w-full border border-brand-border text-white font-bold uppercase tracking-wider py-3 rounded-sm hover:border-white transition-colors"
+            >
+              Aplicar Ahora
+            </button>
+          </div>
+
+          <!-- Grupales -->
+          <div
+            class="bg-brand-dark border border-brand-border p-8 flex flex-col hover:border-gray-600 transition-colors"
+          >
+            <h3 class="font-heading text-2xl uppercase font-bold text-white">
+              Mentorías Grabadas
+            </h3>
+            <div class="font-heading text-4xl text-white my-4">
+              $15 USD<span class="text-lg text-gray-500 font-sans">/mo</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-8 flex-grow">
+              "Comunidad + Presión". Sesiones en grupo, comunidad con mentalidad
+              fuerte y estándares altos dictados por el grupo.
+            </p>
+            <button
+              class="w-full border border-brand-border text-white font-bold uppercase tracking-wider py-3 rounded-sm hover:border-white transition-colors"
+            >
+              Aplicar Ahora
+            </button>
+          </div>
+
+          <!-- 1 a 1 (PREMIUM HIGHLIGHT) -->
+          <div
+            class="bg-brand-dark border-2 border-brand-red p-8 flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(217,4,41,0.15)] transform md:-translate-y-4"
+          >
+            <div class="absolute top-0 inset-x-0 h-1 bg-brand-red"></div>
+            <h3
+              class="font-heading text-2xl uppercase font-bold text-brand-red"
+            >
+              Mentoría 1 a 1
+            </h3>
+            <div class="font-heading text-5xl text-white my-4">
+              $150 USD<span class="text-lg text-gray-500 font-sans"></span>
+            </div>
+            <p class="text-gray-300 text-sm mb-8 flex-grow">
+              "Enfoque directo y brutal". Acceso directo a mí. Análisis de tu
+              vida, diseño de sistema personal y presión absoluta.
+            </p>
+            <button
+              class="w-full bg-brand-red hover:bg-brand-redHover text-white font-bold uppercase tracking-wider py-4 rounded-sm transition-all shadow-[0_4px_15px_rgba(217,4,41,0.3)] hover:shadow-[0_6px_20px_rgba(217,4,41,0.5)]"
+            >
+              Aplicar Ahora
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS SECTION -->
+    <section class="py-24 px-6 bg-brand-dark border-t border-brand-border">
+      <div class="max-w-7xl mx-auto reveal">
+        <div class="text-center mb-16">
+          <h2
+            class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white mb-4"
+          >
+            Los que no se rindieron
+          </h2>
+          <p class="text-gray-400 text-lg">
+            Resultados reales de personas que dejaron de poner excusas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-brand-surface p-8 border-l-4 border-brand-red relative"
+          >
+            <svg
+              class="absolute top-4 right-4 w-8 h-8 text-brand-border"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              />
+            </svg>
+            <p class="text-gray-300 italic mb-6 relative z-10">
+              "Testimonio #1"
+            </p>
+            <p
+              class="font-heading uppercase font-bold text-white tracking-wider"
+            >
+              — Alumno #1
+            </p>
+          </div>
+          <div
+            class="bg-brand-surface p-8 border-l-4 border-brand-red relative"
+          >
+            <svg
+              class="absolute top-4 right-4 w-8 h-8 text-brand-border"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              />
+            </svg>
+            <p class="text-gray-300 italic mb-6 relative z-10">
+              "Testimonio #2"
+            </p>
+            <p
+              class="font-heading uppercase font-bold text-white tracking-wider"
+            >
+              — Alumno #2
+            </p>
+          </div>
+          <div
+            class="bg-brand-surface p-8 border-l-4 border-brand-red relative"
+          >
+            <svg
+              class="absolute top-4 right-4 w-8 h-8 text-brand-border"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              />
+            </svg>
+            <p class="text-gray-300 italic mb-6 relative z-10">
+              "Testimonio #3"
+            </p>
+            <p
+              class="font-heading uppercase font-bold text-white tracking-wider"
+            >
+              — Alumno #3
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section
+      class="py-32 px-6 bg-brand-red text-center relative overflow-hidden"
+    >
+      <!-- Background pattern -->
+      <div
+        class="absolute inset-0 opacity-10"
+        style="
+          background-image: radial-gradient(#000 2px, transparent 2px);
+          background-size: 30px 30px;
+        "
+      ></div>
+
+      <div class="max-w-4xl mx-auto relative z-10 reveal">
+        <h2
+          class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-tight text-white mb-6"
+        >
+          Si sigues igual, nada cambia.
+        </h2>
+        <p class="text-white/90 text-xl md:text-2xl mb-12 font-medium">
+          Tu "yo" del futuro te está juzgando por las decisiones que estás
+          tomando hoy.
+        </p>
+        <a
+          href="#servicios"
+          class="inline-block bg-brand-dark text-white font-heading text-xl uppercase tracking-widest px-10 py-5 rounded-sm transition-all duration-300 shadow-2xl hover:bg-white hover:text-brand-dark hover:-translate-y-1"
+        >
+          Ejecutar Ahora
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-brand-dark py-12 px-6 border-t border-brand-border text-center"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-center gap-6 mb-8">
+          <a
+            href="https://www.instagram.com/andymentorr/"
+            target="_blank"
+            class="text-gray-500 hover:text-white transition-colors transform hover:-translate-y-1"
+            aria-label="Instagram"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@Andymentor"
+            target="_blank"
+            class="text-gray-500 hover:text-white transition-colors transform hover:-translate-y-1"
+            aria-label="YouTube"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"
+              ></path>
+              <polygon
+                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+              ></polygon>
+            </svg>
+          </a>
+        </div>
+        <p class="text-gray-600 font-medium">
+          © 2026 AndyMentor. Todos los derechos reservados. Cero excusas.
+        </p>
+      </div>
+    </footer>
+
+    <!-- MODAL DE AUTENTICACIÓN -->
+    <div
+      id="authModal"
+      class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <!-- Backdrop -->
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onclick="closeModal()"
+      ></div>
+
+      <!-- Modal Content -->
+      <div
+        id="modalContent"
+        class="relative w-full max-w-md bg-brand-surface border border-brand-border border-t-4 border-t-brand-red p-8 transform translate-y-8 transition-transform duration-300"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 text-gray-500 hover:text-brand-red transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-brand-border mb-8">
+          <button
+            id="tabLogin"
+            onclick="switchTab('login')"
+            class="flex-1 pb-4 font-heading text-lg uppercase tracking-wider text-white border-b-2 border-brand-red transition-colors"
+          >
+            Ingresar
+          </button>
+          <button
+            id="tabRegister"
+            onclick="switchTab('register')"
+            class="flex-1 pb-4 font-heading text-lg uppercase tracking-wider text-gray-500 border-b-2 border-transparent hover:text-gray-300 transition-colors"
+          >
+            Registrarse
+          </button>
+        </div>
+
+        <!-- Login Form -->
+        <form
+          id="formLogin"
+          class="space-y-4"
+          onsubmit="event.preventDefault()"
+        >
+          <div>
+            <label class="block text-xs font-bold text-gray-400 uppercase mb-2"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="w-full bg-brand-dark border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="tu@correo.com"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-400 uppercase mb-2"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="w-full bg-brand-dark border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-brand-red hover:bg-brand-redHover text-white font-bold uppercase tracking-wider py-3 mt-4 transition-colors"
+          >
+            Acceder al Sistema
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form
+          id="formRegister"
+          class="space-y-4 hidden"
+          onsubmit="event.preventDefault()"
+        >
+          <div>
+            <label class="block text-xs font-bold text-gray-400 uppercase mb-2"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              class="w-full bg-brand-dark border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-400 uppercase mb-2"
+              >Email</label
+            >
+            <input
+              type="email"
+              class="w-full bg-brand-dark border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="tu@correo.com"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-400 uppercase mb-2"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="w-full bg-brand-dark border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full border border-white hover:bg-white hover:text-brand-dark text-white font-bold uppercase tracking-wider py-3 mt-4 transition-all"
+          >
+            CAMBIA HOY
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Scroll Animations
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 100;
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+      window.addEventListener("scroll", reveal);
+      reveal(); // Trigger on load
+
+      // Modal Logic
+      const modal = document.getElementById("authModal");
+      const modalContent = document.getElementById("modalContent");
+      const body = document.body;
+
+      function openModal(tab = "login") {
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modalContent.classList.remove("translate-y-8");
+        body.style.overflow = "hidden";
+        switchTab(tab);
+      }
+
+      function closeModal() {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modalContent.classList.add("translate-y-8");
+        body.style.overflow = "";
+      }
+
+      // Tab Switching
+      function switchTab(tab) {
+        const formLogin = document.getElementById("formLogin");
+        const formRegister = document.getElementById("formRegister");
+        const tabLogin = document.getElementById("tabLogin");
+        const tabRegister = document.getElementById("tabRegister");
+
+        if (tab === "login") {
+          formLogin.classList.remove("hidden");
+          formRegister.classList.add("hidden");
+
+          tabLogin.classList.add("text-white", "border-brand-red");
+          tabLogin.classList.remove("text-gray-500", "border-transparent");
+
+          tabRegister.classList.add("text-gray-500", "border-transparent");
+          tabRegister.classList.remove("text-white", "border-brand-red");
+        } else {
+          formRegister.classList.remove("hidden");
+          formLogin.classList.add("hidden");
+
+          tabRegister.classList.add("text-white", "border-brand-red");
+          tabRegister.classList.remove("text-gray-500", "border-transparent");
+
+          tabLogin.classList.add("text-gray-500", "border-transparent");
+          tabLogin.classList.remove("text-white", "border-brand-red");
+        }
+      }
+    </script>
+  </body>
+</html>

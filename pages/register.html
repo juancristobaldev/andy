@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AndyMentor | Registro y Selección de Plan</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#050505",
+              surface: "#111111",
+              border: "#222222",
+              main: "#f8f9fa",
+              muted: "#888888",
+              accent: "#d90429",
+              "accent-hover": "#ef233c",
+              gold: "#d4af37",
+            },
+            fontFamily: {
+              heading: ["Impact", "system-ui", "-apple-system", "sans-serif"],
+              body: [
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "sans-serif",
+              ],
+            },
+            scale: {
+              98: "0.98",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Micro-animación para el estado de error */
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+      .animate-shake {
+        animation: shake 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-bg text-main font-body antialiased flex flex-col min-h-screen selection:bg-accent selection:text-white pb-10"
+  >
+    <nav
+      class="w-full py-5 px-8 bg-bg border-b border-border text-center flex-shrink-0 mb-8"
+    >
+      <a
+        href="../index.html"
+        class="font-heading text-[1.8rem] font-black tracking-[2px] text-main no-underline uppercase transition-opacity hover:opacity-80"
+        >ANDYMENTOR.</a
+      >
+    </nav>
+
+    <main
+      class="flex-1 flex flex-col items-center justify-start px-5 w-full max-w-5xl mx-auto"
+    >
+      <div class="w-full text-center mb-10">
+        <h1
+          class="font-heading text-4xl sm:text-5xl text-main uppercase tracking-tight mb-2"
+        >
+          CAMBIA TU MENTALIDAD HOY
+        </h1>
+        <p class="text-muted text-sm sm:text-base uppercase tracking-widest">
+          Decide como empezar y comienza a educarte hoy
+        </p>
+      </div>
+
+      <form
+        id="registerForm"
+        onsubmit="processRegister(event)"
+        class="w-full flex flex-col gap-10"
+      >
+        <!-- SECCIÓN DE PLANES -->
+        <section
+          id="plansSection"
+          class="w-full transition-all duration-300 p-1"
+        >
+          <div class="flex justify-between items-end mb-4 px-1">
+            <h2
+              class="font-bold text-sm uppercase text-gray-400 tracking-widest"
+            >
+              Paso 1: Selecciona un Plan
+            </h2>
+            <span
+              id="validationMsg"
+              class="text-accent text-xs font-bold uppercase tracking-wider hidden transition-opacity"
+              >REQUERIDO</span
+            >
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Plan 1 -->
+            <div
+              onclick="selectPlan(this, 'Ebooks', 15)"
+              class="plan-card relative flex flex-col p-6 border border-border bg-surface cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-muted group"
+            >
+              <div
+                class="flex justify-between items-start mb-6 border-b border-border pb-4"
+              >
+                <h3 class="font-heading text-2xl uppercase tracking-wide">
+                  Ebooks
+                </h3>
+                <span class="text-main font-black text-2xl">$15 USD</span>
+              </div>
+              <ul class="flex flex-col gap-3 flex-1">
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Desarrollo personal
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Disciplina
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Mentalidad fuerte
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Hábitos y enfoque
+                </li>
+              </ul>
+              <div
+                class="mt-6 w-full h-1 bg-border group-hover:bg-muted/50 transition-colors duration-300 selection-indicator"
+              ></div>
+            </div>
+
+            <!-- Plan 2 -->
+            <div
+              onclick="selectPlan(this, 'Mentorías Grabadas', 15)"
+              class="plan-card relative flex flex-col p-6 border border-border bg-surface cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-muted group"
+            >
+              <div
+                class="flex justify-between items-start mb-6 border-b border-border pb-4"
+              >
+                <h3 class="font-heading text-2xl uppercase tracking-wide">
+                  Mentorías Grabadas
+                </h3>
+                <span class="text-main font-black text-2xl">$15 USD</span>
+              </div>
+              <ul class="flex flex-col gap-3 flex-1">
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Clases profundas listas para ver
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Temas: disciplina, control mental, propósito
+                </li>
+              </ul>
+              <div
+                class="mt-6 w-full h-1 bg-border group-hover:bg-muted/50 transition-colors duration-300 selection-indicator"
+              ></div>
+            </div>
+
+            <!-- Plan 3 -->
+            <div
+              onclick="selectPlan(this, 'Mentorías Grupales', 15)"
+              class="plan-card relative flex flex-col p-6 border border-border bg-surface cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-muted group"
+            >
+              <div
+                class="flex justify-between items-start mb-6 border-b border-border pb-4"
+              >
+                <h3 class="font-heading text-2xl uppercase tracking-wide">
+                  Mentorías Grupales
+                </h3>
+                <span class="text-main font-black text-2xl">$15 USD</span>
+              </div>
+              <ul class="flex flex-col gap-3 flex-1">
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Sesiones en grupo
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Motivación + estrategia
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Comunidad con mentalidad fuerte
+                </li>
+              </ul>
+              <div
+                class="mt-6 w-full h-1 bg-border group-hover:bg-muted/50 transition-colors duration-300 selection-indicator"
+              ></div>
+            </div>
+
+            <!-- Plan 4 -->
+            <div
+              onclick="selectPlan(this, 'Mentoría 1 a 1', 150)"
+              class="plan-card relative flex flex-col p-6 border border-border bg-surface cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-muted group"
+            >
+              <div
+                class="flex justify-between items-start mb-6 border-b border-border pb-4"
+              >
+                <h3 class="font-heading text-2xl uppercase tracking-wide">
+                  Mentoría 1 a 1
+                </h3>
+                <span class="text-main font-black text-2xl text-gold"
+                  >$150 USD</span
+                >
+              </div>
+              <ul class="flex flex-col gap-3 flex-1">
+                <li class="flex gap-3 text-sm text-main font-bold">
+                  <svg
+                    class="w-4 h-4 text-gold shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Sesión personalizada contigo
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Enfoque en problemas reales
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Plan de acción directo
+                </li>
+                <li
+                  class="flex gap-3 text-sm text-muted group-hover:text-gray-300 transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4 text-accent shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="square"
+                      stroke-linejoin="miter"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
+                  </svg>
+                  Seguimiento (Premium)
+                </li>
+              </ul>
+              <div
+                class="mt-6 w-full h-1 bg-border group-hover:bg-muted/50 transition-colors duration-300 selection-indicator"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN DE DATOS Y ACCIÓN -->
+        <section
+          class="w-full bg-surface border border-border border-t-4 border-t-border p-8 shadow-2xl flex flex-col md:flex-row gap-10"
+        >
+          <!-- Formulario Datos -->
+          <div class="flex-1 flex flex-col gap-6">
+            <h2
+              class="font-bold text-sm uppercase text-gray-400 tracking-widest mb-2"
+            >
+              Paso 2: Tus Credenciales
+            </h2>
+
+            <div>
+              <label
+                for="name"
+                class="block mb-2 font-bold text-xs uppercase text-gray-500 tracking-wider"
+                >Nombre Completo</label
+              >
+              <input
+                type="text"
+                id="name"
+                placeholder="Tu nombre"
+                required
+                class="w-full bg-bg border border-border p-4 text-main font-body text-base outline-none transition-colors duration-300 focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block mb-2 font-bold text-xs uppercase text-gray-500 tracking-wider"
+                >Correo Electrónico</label
+              >
+              <input
+                type="email"
+                id="email"
+                placeholder="correo@ejemplo.com"
+                required
+                class="w-full bg-bg border border-border p-4 text-main font-body text-base outline-none transition-colors duration-300 focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <label
+                for="password"
+                class="block mb-2 font-bold text-xs uppercase text-gray-500 tracking-wider"
+                >Contraseña de Acceso</label
+              >
+              <input
+                type="password"
+                id="password"
+                placeholder="••••••••"
+                required
+                class="w-full bg-bg border border-border p-4 text-main font-body text-base outline-none transition-colors duration-300 focus:border-accent"
+              />
+            </div>
+          </div>
+
+          <!-- Resumen y Submit -->
+          <div
+            class="w-full md:w-[350px] flex flex-col justify-between bg-bg border border-border p-6 relative"
+          >
+            <div>
+              <h2
+                class="font-bold text-sm uppercase text-gray-400 tracking-widest mb-6 border-b border-border pb-4"
+              >
+                Paso 3: Resumen
+              </h2>
+
+              <div class="flex flex-col gap-2 mb-6">
+                <span class="text-xs text-muted uppercase tracking-wider"
+                  >Plan Seleccionado:</span
+                >
+                <p id="planSummaryText" class="text-lg text-muted font-body">
+                  Ninguno
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-auto">
+              <!-- Mensaje UI en lugar de alert() -->
+              <div
+                id="systemMessage"
+                class="hidden mb-4 p-3 border text-sm font-bold uppercase tracking-wide text-center transition-all duration-300"
+              ></div>
+
+              <!-- Usamos clases para simular el disabled visualmente y poder capturar el click de validación -->
+              <button
+                type="submit"
+                id="registerBtn"
+                class="w-full inline-flex justify-center items-center p-4 text-lg font-extrabold uppercase tracking-widest border-none rounded-sm transition-all duration-300 bg-[#1a1a1a] text-[#555] cursor-not-allowed shadow-none"
+              >
+                Completar Registro
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="text-center text-sm pt-4 pb-8">
+          <p class="text-muted mb-2">¿Ya tienes acceso al sistema?</p>
+          <a
+            href="./login.html"
+            class="text-accent hover:text-accent-hover font-bold uppercase tracking-wider underline underline-offset-4 transition-colors"
+          >
+            Iniciar Sesión
+          </a>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      let currentPlan = null;
+      let currentPrice = 0;
+
+      function selectPlan(element, planName, price) {
+        // 1. Limpiar estado visual de todas las cards
+        document.querySelectorAll(".plan-card").forEach((card) => {
+          card.classList.remove(
+            "border-accent",
+            "bg-[rgba(217,4,41,0.02)]",
+            "scale-[1.02]",
+            "z-10",
+            "shadow-[0_8px_30px_rgba(217,4,41,0.15)]",
+          );
+          card.classList.add("border-border", "bg-surface");
+
+          const indicator = card.querySelector(".selection-indicator");
+          indicator.classList.remove("bg-accent");
+          indicator.classList.add("bg-border");
+
+          // Resetear precios a color normal (excepto gold)
+          const priceSpan = card.querySelector("span");
+          if (!priceSpan.classList.contains("text-gold")) {
+            priceSpan.classList.remove("text-accent");
+            priceSpan.classList.add("text-main");
+          }
+        });
+
+        // 2. Aplicar estado visual a la card seleccionada
+        element.classList.remove("border-border", "bg-surface");
+        element.classList.add(
+          "border-accent",
+          "bg-[rgba(217,4,41,0.02)]",
+          "scale-[1.02]",
+          "z-10",
+          "shadow-[0_8px_30px_rgba(217,4,41,0.15)]",
+        );
+
+        const indicator = element.querySelector(".selection-indicator");
+        indicator.classList.remove("bg-border");
+        indicator.classList.add("bg-accent");
+
+        const priceSpan = element.querySelector("span");
+        if (!priceSpan.classList.contains("text-gold")) {
+          priceSpan.classList.remove("text-main");
+          priceSpan.classList.add("text-accent");
+        }
+
+        // 3. Actualizar datos lógicos
+        currentPlan = planName;
+        currentPrice = price;
+
+        // 4. Actualizar UI de resumen
+        document.getElementById("planSummaryText").innerHTML = `
+          <span class="text-main font-bold block mb-1">${planName}</span> 
+          <span class="text-accent font-black text-2xl">$${price}</span>
+        `;
+
+        // 5. Ocultar alertas de validación si existían
+        document.getElementById("validationMsg").classList.add("hidden");
+        document
+          .getElementById("plansSection")
+          .classList.remove("ring-1", "ring-accent", "animate-shake");
+
+        // 6. Habilitar botón de registro
+        const btn = document.getElementById("registerBtn");
+        btn.classList.remove(
+          "bg-[#1a1a1a]",
+          "text-[#555]",
+          "cursor-not-allowed",
+          "shadow-none",
+        );
+        btn.classList.add(
+          "bg-accent",
+          "text-white",
+          "cursor-pointer",
+          "shadow-[0_4px_15px_rgba(217,4,41,0.2)]",
+          "hover:bg-accent-hover",
+          "hover:-translate-y-0.5",
+          "hover:shadow-[0_8px_25px_rgba(217,4,41,0.4)]",
+          "active:translate-y-0.5",
+          "active:scale-98",
+        );
+      }
+
+      function processRegister(event) {
+        event.preventDefault();
+
+        // Validación estricta: Debe haber un plan seleccionado
+        if (!currentPlan) {
+          const planSection = document.getElementById("plansSection");
+          const validationMsg = document.getElementById("validationMsg");
+
+          planSection.classList.add("ring-1", "ring-accent", "animate-shake");
+          validationMsg.classList.remove("hidden");
+
+          // Scroll hacia los planes si no se ven
+          planSection.scrollIntoView({ behavior: "smooth", block: "center" });
+
+          setTimeout(() => {
+            planSection.classList.remove("animate-shake");
+          }, 300);
+          return;
+        }
+
+        const btn = document.getElementById("registerBtn");
+        const originalText = btn.textContent;
+        const msgBox = document.getElementById("systemMessage");
+
+        // Estado de carga
+        btn.style.pointerEvents = "none";
+        btn.textContent = "PROCESANDO...";
+        btn.classList.add("opacity-80");
+        msgBox.classList.add("hidden");
+
+        // Simulación de API / Registro
+        setTimeout(() => {
+          // Éxito visual en el botón
+          btn.classList.remove(
+            "bg-accent",
+            "hover:bg-accent-hover",
+            "opacity-80",
+          );
+          btn.classList.add("bg-[#28a745]");
+          btn.textContent = "SISTEMA ACTUALIZADO";
+
+          // Mostrar mensaje UI (Reemplazo de alert)
+          msgBox.textContent = `Registro exitoso para: ${currentPlan}`;
+          msgBox.classList.remove("hidden", "border-accent", "text-accent");
+          msgBox.classList.add(
+            "border-[#28a745]",
+            "text-[#28a745]",
+            "bg-[rgba(40,167,69,0.1)]",
+          );
+
+          setTimeout(() => {
+            // Restaurar estado (Aquí normalmente se redirigiría)
+            btn.style.pointerEvents = "auto";
+            btn.classList.remove("bg-[#28a745]");
+            btn.classList.add("bg-accent", "hover:bg-accent-hover");
+            btn.textContent = originalText;
+
+            // window.location.href = "/checkout.html"; o "/dashboard.html"
+          }, 2500);
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>
